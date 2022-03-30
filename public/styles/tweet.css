@@ -1,0 +1,40 @@
+#testArticle {
+display: flex;
+border: 4px solid rgb(59, 55, 55);
+border-radius: 5px;
+margin: 2em;
+width: 600px;
+flex-direction: column;
+}
+
+#testArticle:hover{
+  box-shadow: 5px 10px #888888;
+}
+
+#testArticle > header {
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+#testArticle > p {
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+  
+}
+
+#testArticle > footer {
+  font-size:small;
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  border-top: 4px solid rgb(32, 30, 30);
+  margin-bottom: 1em;
+  margin-left: 0.75em;
+  margin-right: 0.75em;
+}
+
+#testArticle > footer > div {
+  margin: 0.6em;
+}

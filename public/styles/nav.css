@@ -1,0 +1,33 @@
+#nav {
+    display: flex;
+    height: 120px;
+    width: 100%;
+    color: #FFFFFF;
+    background-color: #4056A1;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#tweeterLogo {
+  margin-left: 1.5em;
+  font-size: 49px;
+}
+
+#newTweet {
+  display: flex;
+  flex-direction: column;
+  margin-right: 1.5em;
+  justify-content: center;
+  align-items: center;
+}
+
+#profile {
+height: 400px;
+width: 100%;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+background-color: #b5b5b5;
+background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+}

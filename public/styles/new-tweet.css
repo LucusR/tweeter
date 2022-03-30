@@ -1,0 +1,36 @@
+.new-tweet {
+  display: flex;
+  margin: 1em;
+}
+
+#tweet-text {
+  width: 600px;
+  height: 50%;
+  align-items: baseline;
+  justify-content: left;
+  resize: none;
+  box-sizing: border-box;
+  margin: 0;
+  border: none;
+  border-bottom: 4px solid rgb(32, 30, 30);
+  outline: none;
+}
+
+#tweet-text::placeholder {
+text-align:start
+}
+
+.new-tweet > form {
+  display: block;
+}
+
+.new-tweet > form > div > button {
+background-color: blue;
+color: white;
+margin-top: 15px;
+}
+
+.counter {
+  float: right;
+  margin-top: 15px;
+}

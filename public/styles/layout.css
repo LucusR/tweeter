@@ -16,10 +16,28 @@ html {
 
 body {
   color: #545149;
-  background-color: #f4f1ec;
+  background-color: #b5b5b5;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
   font-size: 24px;
+  font-family: 'Source Sans Pro', sans-serif; 
+  align-items: center;
+
 }
 
 /*
  * Additional CSS can be defined below or in other CSS files, as per instructions
  */
+
+ .container {
+  display: flex;
+  width: 90%;
+  background-color: #b5b5b5;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-light.png");
+  flex-direction: column;
+  margin: auto;
+  align-items: center;
+  border: none;
+  padding: 1em;
+ }
+   
+ 

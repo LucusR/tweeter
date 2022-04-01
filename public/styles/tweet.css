@@ -1,32 +1,53 @@
-#testArticle {
+#tweets-container > article {
 display: flex;
 border: 4px solid rgb(59, 55, 55);
 border-radius: 5px;
-margin: 2em;
+margin: 1em;
 width: 600px;
 flex-direction: column;
 }
 
-#testArticle:hover{
+#tweets-container > article:hover{
   box-shadow: 5px 10px #888888;
 }
 
-#testArticle > header {
+#tweets-container > article > header {
+  display: flex;
   margin-left: 0.75em;
   margin-right: 0.75em;
   margin-top: 1em;
   margin-bottom: 1em;
+  flex-direction: row;
 }
 
-#testArticle > p {
+#tweets-container > article > header > img {
+  width: 75px;
+  height: 75px;
+}
+
+#tweets-container > article > header > h2 {
+  font-size: 25px;
+}
+
+#tweets-container > article > header > span {
+  display: flex;
+  margin-left: 6em;
+  margin-right: 2em;
+  margin-top: 0.65em;
+}
+
+#tweets-container > article > p {
+  display: inline-block;
+  flex-grow: 2;
   margin-left: 0.75em;
   margin-right: 0.75em;
-  
+  height: 50%;
+  word-wrap: break-word;
 }
 
-#testArticle > footer {
+#tweets-container > article > footer {
   font-size:small;
-  display: flex;
+  display: block;
   justify-content: space-between;
   border: none;
   border-top: 4px solid rgb(32, 30, 30);
@@ -35,6 +56,6 @@ flex-direction: column;
   margin-right: 0.75em;
 }
 
-#testArticle > footer > div {
+#tweets-container > article > footer > div {
   margin: 0.6em;
 }

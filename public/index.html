@@ -27,58 +27,41 @@
     <!-- App JS -->
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js" integrity="sha512-SVDh1zH5N9ChofSlNAK43lcNS7lWze6DTVx1JCXH1Tmno+0/1jMpdbR8YDgDUfcUrPp1xyE53G42GFrcM0CMVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   </head>
-  <body>
+  <body id="body">
     <!-- Top nav bar (fixed) -->
-    <nav id="nav">
-      <div <span id="tweeterLogo" style="font-family:'Bungee, cursive'">tweeter</span>
+    <div class="row top-navbar">
+      <nav id="nav">
+        <h2 id="tweeterLogo" style="font-family:'Bungee, cursive'">tweeter</h2>
+        <div id="newTweet" <h2>Write a new Tweet</h2> 
+          <br>
+          <i class="fa-solid fa-angles-down"></i> 
+        </div>
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col profile-pic-col">
+        <header class="profile-information">
+          <img src="/images/profile-hex.png">
+            <h2>Test Name</h2>
+        </header>
       </div>
-    
-      <div id="newTweet" <h2>Write a new Tweet</h2> 
-        <br>
-        <i class="fa-solid fa-angles-down"></i> 
-      </div>
-    </nav>
-
-    <header id ="profile">
-      <div>
-          <img src="/images/profile-hex.png"> 
-      </div>
-      <br>
-      <div>
-          <h2>User Name</h2>
-      </div>
-  </header>
-
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <form Content-Type: application/x-www-form-urlencoded method="POST" action="/tweets/">
-          <textarea name="text" id="tweet-text" placeholder="What are you humming about?" ></textarea>
-          <div>
-            <button type="submit">tweet</button>
-            <output name="counter" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-    
-      <section>
-        <article id="testArticle">
-          <header>Hello Paolo</header>
-          <p>Hello Paolo Hello Paolo</p>
-          <footer>
-             <div>10 days ago</div>
+      <div class="col tweet-col">
+        <section>
+            <div id="error-message"></div>
+          <form id="tweet-form" Content-Type: application/x-www-form-urlencoded">
+            <textarea name="text" id="tweet-text" placeholder="What are you thinking about?" ></textarea>
             <div>
-               <i class="fa-solid fa-flag"></i>
-               <i class="fa-solid fa-retweet"></i>
-               <i class="fa-solid fa-heart"></i>
+              <button id="submit-button" value="Tweet" type="submit">tweet</button>
+              <output name="counter" class="counter" for="tweet-text">140</output>
             </div>
-          </footer>
-        </article>
-    </section>
-    
-  
-    </main>
+          </form>
+        </section>
+        <section id="tweets-container">
+        </section>
+      </div>
+    </div>
   </body>
 </html>
 

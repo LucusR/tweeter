@@ -4,22 +4,31 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 const createTweetElement = (tweet) => {
 
       let $tweet = (`<article>` +
                 `<header>` +
           `<img src="/images/profile-hex.png">` +
           `<h2>${tweet.user.name}</h2>` +
-          `<span>${tweet.user.handle}</span>` +
-        `</header>` +
-        `<p>${tweet.content.text}</p>` +
+          `<h3>${tweet.user.handle}</h3>` +
+        `</header>` + 
+        `<p>${escape(tweet.content.text)}</p>` +
         `<footer>` +
-           `<div>${timeago.format(tweet.created_at)}</div>` +
-         ` <div>` +
-             `<i class="fa-solid fa-flag"></i> <i class="fa-solid fa-retweet"></i> <i class="fa-solid fa-heart"></i>` +
-          `</div>` +
+           `<div>${timeago.format(tweet.created_at)}` +
+           `<div> <i class="fa-solid fa-flag"> </i>` +
+           `<i class="fa-solid fa-retweet"> </i>` +
+           `<i class="fa-solid fa-heart"> </i> </div>` +
+           `</div>` +
         `</footer>` +
-      `</article>` );
+      `</article>`);
+      
+
       return $tweet;
     }
 
@@ -44,28 +53,36 @@ $(() => {
 
   getTweets();
 
-  $('.new-tweet').on('submit', function(e) {
-    e.preventDefault();
 
-    $submittedTweet = $('#tweet-text').serialize();
-  
-  console.log("test input", $submittedTweet)
+  $('#newTweet').on('click', function(event) {
+    $('#tweet-form').find("#tweet-text").focus();
+  })
 
-    if ($submittedTweet.length > 140) {
-      alert("Your tweet has exceeded the maximum character length!")
-    } else if ($ubmittedTweet = "") {
-      alert("Your tweet contains no message!") 
+
+  $('#tweet-form').on('submit', function(event) {
+    event.preventDefault();
+    
+    $tweetString = $('#tweet-text').val();
+    $errorMessage = "";
+
+    if ($tweetString.length > 140) {
+      $errorMessage = "Your tweet has exceeded the maximum character length"
+      $('#error-message').text($errorMessage).css('display', 'block');
+    } else if ($tweetString === "" || $tweetString === null) {
+      $errorMessage = "Your tweet contains no message"
+      $('#error-message').text($errorMessage + " ! ").css('display', 'block');
     } else {
-
-    $('.tweet-text').prop("disabled", true).text("Loading")
+      
+      $('#error-message').css('display', 'none');
       $.ajax({
         type: "POST",
         url: "/tweets",
         data: $('#tweet-text').serialize()
       }).then((data) => {
-      $('.submit-button').prop("disabled", false).text("Submit")
-      getTweets();
+        getTweets();
       });
     };
+    $('#tweet-text').val('')
+    $('.counter').val(140)
   });
 });

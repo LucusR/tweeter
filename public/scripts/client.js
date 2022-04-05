@@ -11,6 +11,8 @@ const escape = function (str) {
   return div.innerHTML;
 };
 
+
+// generates tweet html to be placed in tweet container
 const createTweetElement = tweetData => {
   const { user, content, created_at } = tweetData;
 
@@ -44,11 +46,6 @@ const createTweetElement = tweetData => {
   return singleTweetElement;
 };
 
-
-
-
-
-
     const renderTweets = (tweets) => {
       $('#tweets-container').empty();
       for(let t in tweets) {
@@ -65,8 +62,6 @@ const createTweetElement = tweetData => {
         renderTweets(data);
       })
     }
-
-
 
 $(() => {
 

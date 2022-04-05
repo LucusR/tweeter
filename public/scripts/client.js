@@ -5,7 +5,7 @@
  */
 
 // escape function eliminates cross-site scripting from tweet text box
-const escape = function (str) {
+const escape = function(str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
@@ -29,8 +29,8 @@ const createTweetElement = tweetData => {
         <div class="tweet-content">
           <!-- <p>${content.text}</p> -->
           ${$("<p>")
-            .text(content.text)
-            .html()}
+    .text(content.text)
+    .html()}
         </div>
         <!-- time and reactions icons -->
         <div class="time-reactions">
@@ -46,22 +46,22 @@ const createTweetElement = tweetData => {
   return singleTweetElement;
 };
 
-    const renderTweets = (tweets) => {
-      $('#tweets-container').empty();
-      for(let t in tweets) {
-        $tweet = createTweetElement(tweets[t]);
-        $('#tweets-container').prepend($tweet)
-      }
-     }
+const renderTweets = (tweets) => {
+  $('#tweets-container').empty();
+  for (let t in tweets) {
+    $tweet = createTweetElement(tweets[t]);
+    $('#tweets-container').prepend($tweet);
+  }
+};
 
-     const getTweets = () => {
-      $.ajax({
-        url: "/tweets",
-        type: "GET",
-      }).then(function(data) {
-        renderTweets(data);
-      })
-    }
+const getTweets = () => {
+  $.ajax({
+    url: "/tweets",
+    type: "GET",
+  }).then(function(data) {
+    renderTweets(data);
+  });
+};
 
 $(() => {
 
@@ -69,7 +69,7 @@ $(() => {
 
   $('#newTweet').on('click', function(event) {
     $('#tweet-form').find("#tweet-text").focus();
-  })
+  });
 
   //listener for tweet submissions, including text counter and error-messages
   $('#tweet-form').on('submit', function(event) {
@@ -79,10 +79,10 @@ $(() => {
     $errorMessage = "";
 
     if ($tweetString.length > 140) {
-      $errorMessage = "Your tweet has exceeded the maximum character length"
+      $errorMessage = "Your tweet has exceeded the maximum character length";
       $('#error-message').text($errorMessage).css('display', 'block');
     } else if ($tweetString === "" || $tweetString === null) {
-      $errorMessage = "Your tweet contains no message"
+      $errorMessage = "Your tweet contains no message";
       $('#error-message').text($errorMessage + " ! ").css('display', 'block');
     } else {
       
@@ -94,8 +94,8 @@ $(() => {
       }).then((data) => {
         getTweets();
       });
-    };
-    $('#tweet-text').val('')
-    $('.counter').val(140)
+    }
+    $('#tweet-text').val('');
+    $('.counter').val(140);
   });
 });

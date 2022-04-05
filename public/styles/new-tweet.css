@@ -81,6 +81,16 @@
   color: rgb(83, 79, 79)
 }
 
+#tweets-container {
+  margin-right: 1em;
+} 
+
+#tweet-form {
+  margin-top: 1em;
+  margin-right: 1em;
+  margin-left: 1em;
+}
+
 #tweets-container > article:hover{
   box-shadow: 5px 10px #888888;
 } 

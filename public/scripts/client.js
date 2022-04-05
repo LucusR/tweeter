@@ -4,33 +4,50 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// escape function eliminates cross-site scripting from tweet text box
 const escape = function (str) {
   let div = document.createElement("div");
   div.appendChild(document.createTextNode(str));
   return div.innerHTML;
 };
 
-const createTweetElement = (tweet) => {
+const createTweetElement = tweetData => {
+  const { user, content, created_at } = tweetData;
 
-      let $tweet = (`<article>` +
-                `<header>` +
-          `<img src="/images/profile-hex.png">` +
-          `<h2>${tweet.user.name}</h2>` +
-          `<h3>${tweet.user.handle}</h3>` +
-        `</header>` + 
-        `<p>${escape(tweet.content.text)}</p>` +
-        `<footer>` +
-           `<div>${timeago.format(tweet.created_at)}` +
-           `<div> <i class="fa-solid fa-flag"> </i>` +
-           `<i class="fa-solid fa-retweet"> </i>` +
-           `<i class="fa-solid fa-heart"> </i> </div>` +
-           `</div>` +
-        `</footer>` +
-      `</article>`);
-      
+  let singleTweetElement = $(`<article class="tweet-component">
+        <!-- image-username-refkey -->
+        <div class="image-username-refkey">
+          <div class="image-username">
+            <img src=${user.avatars} alt="" />
+            <span>${user.name}</span>
+          </div>
+          <div>${user.handle}</div>
+          </div>
+        <!-- tweet contect -->
+        <div class="tweet-content">
+          <!-- <p>${content.text}</p> -->
+          ${$("<p>")
+            .text(content.text)
+            .html()}
+        </div>
+        <!-- time and reactions icons -->
+        <div class="time-reactions">
+          <p>${timeago.format(created_at)}</p>
+          <div class="icons">
+            <i class="fas fa-flag"></i>
+            <i class="fas fa-retweet"></i>
+            <i class="fas fa-heart"></i>
+          </div>
+        </div>
+      </article>`);
 
-      return $tweet;
-    }
+  return singleTweetElement;
+};
+
+
+
+
+
 
     const renderTweets = (tweets) => {
       $('#tweets-container').empty();
@@ -49,16 +66,17 @@ const createTweetElement = (tweet) => {
       })
     }
 
+
+
 $(() => {
 
   getTweets();
-
 
   $('#newTweet').on('click', function(event) {
     $('#tweet-form').find("#tweet-text").focus();
   })
 
-
+  //listener for tweet submissions, including text counter and error-messages
   $('#tweet-form').on('submit', function(event) {
     event.preventDefault();
     

@@ -15,7 +15,7 @@ This application was built for education purposes - proceed with caution!
 ### 3) Dynamic character counter updates in real time to let users know how many characters they have available for their tweet:
 ![Alt text](https://github.com/LucusR/tweeter/blob/master/public/images/gitImages/T3.png)
 
-### 4) Responsive design allows page to be used with a variety of screen sizes.
+### 4) Responsive design allows page to be used with a variety of screen sizes:
 ![Alt text](https://github.com/LucusR/tweeter/blob/master/public/images/gitImages/T4.png)
 
 ## Getting Started
